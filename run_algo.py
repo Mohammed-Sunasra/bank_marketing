@@ -26,6 +26,8 @@ X_train_res, y_train_res = oversample(X_train, y_train)
 
 #scores = run_models_with_kfold(X_train_res, y_train_res)
 
-scores = run_models(X_train_res, X_test, y_train_res, y_test)
-
-print scores
+# scores = run_models(X_train_res, X_test, y_train_res, y_test)
+# print scores
+proba = run_rfc(X_train_res, X_test, y_train_res, y_test)
+X_test['y_proba'] = [n for m,n in proba]
+print X_test.to_csv('result.csv')

@@ -67,3 +67,16 @@ def run_models(X_train, X_test, y_train, y_test):
         #model_scores[str(model)] = auc
         scores.append(auc)
     return scores
+
+def run_rfc(X_train, X_test, y_train, y_test):
+    rfc = RandomForestClassifier(random_state=9)
+    proba = get_proba(rfc, X_train, X_test, y_train, y_test)
+    return proba
+
+def get_proba(model, X_train, X_test, y_train, y_test):
+    '''
+    Performs model training and returns AUC score
+    '''
+    model = model.fit(X_train, y_train)
+    ypred_proba = model.predict_proba(X_test)
+    return ypred_proba
