@@ -25,7 +25,7 @@ COMPRESS_OFFLINE = False
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
 
 AUTH_USER_MODEL = 'core.User'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_URL = '/login/'
 
 

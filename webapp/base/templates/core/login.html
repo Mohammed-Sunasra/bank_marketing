@@ -14,9 +14,11 @@
                         <form action="{% url 'login' %}" method="post">
                             {% csrf_token %}
 
+                            {% if form_errors %}
                             <div class="alert alert-danger">
                                 {{form_errors}}
                               </div>
+                            {% endif %}
 
                             {% for field in form %}
                             <div class="form-group">
