@@ -20,4 +20,8 @@ def login_view(request):
         if user:
             login(request, user)
             return HttpResponseRedirect('/')  # Redirect to a success page.
+
+    if not form.is_valid():
+        context['form_errors'] = str(form.errors['__all__'][0])
+
     return render(request, 'core/login.html', context)
