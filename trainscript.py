@@ -69,14 +69,16 @@ def run_models(X_train, X_test, y_train, y_test):
     return scores
 
 def run_rfc(X_train, X_test, y_train, y_test):
-    rfc = RandomForestClassifier(random_state=9)
+    rfc = LogisticRegression(random_state=9)
     proba = get_proba(rfc, X_train, X_test, y_train, y_test)
     return proba
+
 
 def get_proba(model, X_train, X_test, y_train, y_test):
     '''
     Performs model training and returns AUC score
     '''
     model = model.fit(X_train, y_train)
+    ypred = model.predict(X_test)
     ypred_proba = model.predict_proba(X_test)
-    return ypred_proba
+    return ypred,ypred_proba

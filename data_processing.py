@@ -18,7 +18,7 @@ from sklearn.preprocessing import Imputer
 def load_data(path):
     df = pd.read_csv(path,sep=';')
     #Dropping duration feature as it's highly dependent
-    df.drop('duration',axis=1,inplace=True)
+    #df.drop('duration',axis=1,inplace=True)
     return df       
 
 def convertOutputFeatures(df):
@@ -59,6 +59,7 @@ def convertInputFeatures(df):
 
 	#Removing insignificant variables
 	df.drop(['day_of_week','pdays','month'],axis=1,inplace=True)
+	df.drop('duration',axis=1,inplace=True)
 
 	return df
 
